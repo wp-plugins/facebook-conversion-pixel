@@ -1,5 +1,5 @@
 === Facebook Conversion Pixel ===
-Contributors: kellenmace, vincentastolfi
+Contributors: kellenmace
 Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
