@@ -1,7 +1,7 @@
 <?php
 /**
  * Facebook Conversion Pixel Options
- * @version 1.0
+ * @since 0.1.0
  */
 class Fb_Pxl_Admin {
  
@@ -22,7 +22,6 @@ class Fb_Pxl_Admin {
 	 * @since 0.1.0
 	 */
 	public function __construct() {
-		// Set our title
 		$this->title = __( 'Facebook Conversion Pixel', 'myprefix' );
 		$this->hooks();
  	}

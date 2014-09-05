@@ -3,7 +3,7 @@ Contributors: kellenmace
 Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,11 +15,11 @@ This plugin does what the "Facebook Pixel Conversions for WordPress" plugin on t
 
 - Supports inserting Facebook Conversion Pixel codes into Posts, Pages, and all other custom post types that you may have on your site
 
-- Provides a plugin options page where you can choose to enable the plugin for certain post types, and disable it for others. For instace, you could choose to have the Facebook Conversion Pixel box appear when editing any of your Posts, but never appear when you're editing Pages, or vice versa.
+- Provides a plugin options page where you can choose to enable the plugin for certain post types, and disable it for others. For example, you could choose to have the Facebook Conversion Pixel box appear when editing any of your Posts, but never appear when you're editing Pages, or vice versa.
 
  == Installation ==
 1. Download the plugin
-2. Upload to "/wp-content/plugins" folder or upload through WordPress interface
+2. Upload to "/wp-content/plugins" folder or install through WordPress Admin Dashboard
 3. Activate the Plugin
 
 == Frequently Asked Questions ==
