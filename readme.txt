@@ -37,6 +37,10 @@ In the WordPress Admin Dashboard, begin editing the Post, Page, or other post ty
 
 From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings.
 
+= I have enabled the correct post type, but I still don't see the the Facebook Conversion Pixel field. Why? =
+
+When editing a post or page, click the Screen Options button in the upper-right corner of the page, and make sure "Facebook Conversion Pixel Code" is checked. If it isn't, then the plugin's fields won't be visible.
+
 = How can I tell if it's working? =
 
 To verify that the pixel is working correctly, test it by navigating to the web page you put the pixel on. If it's working, the pixel will send that information back to Facebook.
