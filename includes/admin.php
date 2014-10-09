@@ -1,7 +1,7 @@
 <?php
 /**
  * Facebook Conversion Pixel Options
- * @since 0.1.0
+ * @since 1.0
  */
 class Fb_Pxl_Admin {
  
@@ -19,7 +19,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Constructor
-	 * @since 0.1.0
+	 * @since 1.0
 	 */
 	public function __construct() {
 		$this->title = __( 'Facebook Conversion Pixel', 'myprefix' );
@@ -28,17 +28,18 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Initiate hooks
-	 * @since 0.1.0
+	 * @since 1.1
 	 */
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_init', array( $this, 'update_options' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		add_action( 'admin_head', array( $this, 'custom_admin_styles' ) );
 	}
  
 	/**
 	 * Register setting to WP
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function init() {
 		register_setting( self::$key, self::$key );
@@ -46,25 +47,40 @@ class Fb_Pxl_Admin {
 
 	/**
 	 * Update Options Array
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function update_options() {
+		//wp_die( '<pre>' . print_r( array( get_option( 'fb_pxl_options' ) ), 1 ) . '</pre>' );
 		$options = get_option( 'fb_pxl_options' );
 		$post_types = get_post_types();
 
-		// Remove any options that don't have a corresponding post type
+		// Exclude navigation menu and revision post types
+		if ( in_array( 'nav_menu_item', $post_types ) ) {
+			unset( $post_types[ 'nav_menu_item' ] );
+		}
+		if ( in_array( 'revision', $post_types ) ) {
+			unset( $post_types[ 'revision' ] );
+		}
+		
 		if ( $options ) {
+			// Add any missing post types to the options array
+			foreach ( $post_types as $post_type ) {
+				if ( ! array_key_exists( $post_type, $options ) ) {
+						$options[ $post_type ] = '';
+				}
+			}
+
+			// Remove any options that don't have a corresponding post type
 			foreach ( $options as $option_key => $option_value ) {
 				if ( ! array_key_exists( $option_key, $post_types ) ) {
 					unset( $options[ $option_key ] );
 				}
 			}
 		}
-
-		// Add any post types missing from the options array
-		foreach ( $post_types as $post_type ) {
-			if ( ! array_key_exists( $post_type, $options ) ) {
-				$options[ $post_type ] = '';
+		else {
+			// Populate options array, if empty
+			foreach ( $post_types as $post_type ) {
+					$options[ $post_type ] = '';
 			}
 		}
 
@@ -75,7 +91,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Add menu options page
-	 * @since 0.1.0
+	 * @since 1.0
 	 */
 	public function add_options_page() {
 		$this->options_page = add_options_page( $this->title, $this->title, 'manage_options', self::$key, array( $this, 'admin_page_display' ) );
@@ -83,7 +99,7 @@ class Fb_Pxl_Admin {
  
 	/**
 	 * Admin page markup
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function admin_page_display() {
 		$this->admin_page_setup();
@@ -101,14 +117,14 @@ class Fb_Pxl_Admin {
 
 	/**
 	 * Defines the plugin option page sections and fields
-	 * @since  0.1.0
+	 * @since  1.0
 	 * @return array
 	 */
 	public function admin_page_setup() {
 
 		add_settings_section(
 		    'fb_pxl_display_on',
-		    'Disable Facebook Conversion Pixel field on these post types:',
+		    'Enable Facebook Conversion Pixel field on these post types:',
 		    '',
 		    self::$key
 		);
@@ -130,18 +146,30 @@ class Fb_Pxl_Admin {
 
     /**
 	 * Display settings field values
-	 * @since  0.1.0
+	 * @since  1.0
 	 */
 	public function fb_pxl_display_on_output( $args ) {
 		$option_key = $args[ 0 ];
 		$option_value = $args[ 1 ];
-		$html = '<input type="checkbox" id="fb_pxl_disable_' . $option_key . '" name="fb_pxl_options[' . $option_key . ']" value="on"' . checked( $option_value, "on", false ) . '/>';
+		$html = '<input type="checkbox" id="fb_pxl_enable_' . $option_key . '" name="fb_pxl_options[' . $option_key . ']" value="on"' . checked( $option_value, "on", false ) . '/>';
 		echo $html;
+	}
+
+    /**
+	 * Apply custom admin styles
+	 * @since  0.1.1
+	 */
+	public function custom_admin_styles() {
+		echo '<style>
+			#fb_pxl_conversion_code {
+				width: 100%;
+			}
+		</style>';
 	}
 }
  
 /**
  * Get the party started
- * @since  0.1.0
+ * @since  1.0
  */
 $Fb_Pxl_Admin = new Fb_Pxl_Admin();
