@@ -11,6 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  == Description ==
 Insert Facebook Conversion Pixel code into to Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
 
+This brief video shows how to use this plugin to easily insert conversion pixel code into the pages of your site:
+[youtube http://youtu.be/iTUO35AUnKg]
+
 This plugin allows you to insert Facebook Conversion Pixels, and provides these additional features:
 
 - Supports inserting Facebook Conversion Pixel codes into Posts, Pages, and all other custom post types that you may have on your site
@@ -35,7 +38,7 @@ In the WordPress Admin Dashboard, begin editing the Post, Page, or other post ty
 
 = How do I show/hide the Facebook Conversion Pixel field on certain post types? =
 
-From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings.
+From the WordPress Admin Dashboard, go to Settings > Facebook Conversion Pixel and check the boxes to enable/disable the plugin for each of your post types, and save your settings. Only enable the post types on which you need to insert conversion pixel code, and leave the rest unchecked.
 
 = I have enabled the correct post type, but I still don't see the the Facebook Conversion Pixel field. Why? =
 

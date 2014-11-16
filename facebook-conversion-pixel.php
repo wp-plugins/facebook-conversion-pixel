@@ -56,7 +56,7 @@ elseif ( is_admin() ) {
 
 		$meta_boxes[] = array(
 			'id'         => 'fb_pxl_metabox',
-			'title'      => 'Facebook Pixel Conversion Code',
+			'title'      => 'Facebook Conversion Pixel Code',
 			'pages'      => $pages,
 			'context'    => 'normal',
 			'priority'   => 'high',
