@@ -9,7 +9,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
  == Description ==
-Facebook's [Facebook Ads Troubleshooting](https://www.facebook.com/help/328988437301229 "recommended plugin") for inserting Facebook Conversion Pixel code into to Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
+Facebook's [recommended plugin](https://www.facebook.com/help/328988437301229 "Facebook Ads Troubleshooting") for inserting Facebook Conversion Pixel code into to Posts, Pages, or any other post types. Conversion tracking helps businesses measure the return on investment of their Facebook Ads by reporting on the actions people take after the ads are served.
 
 This brief video shows how to use this plugin to easily insert conversion pixel code into the pages of your site:
 [youtube https://www.youtube.com/watch?v=iTUO35AUnKg]
