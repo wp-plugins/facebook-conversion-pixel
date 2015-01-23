@@ -2,7 +2,7 @@
 /*
 Plugin Name: Facebook Conversion Pixel
 Plugin URI: https://github.com/kellenmace/facebook-conversion-pixel
-Description: Add Facebook Conversion Pixels to Posts, Pages, or any other custom post types.
+Description: Facebook's recommended plugin for adding Facebook Conversion Pixel code to WordPress sites.
 Version: 1.1
 Author: Kellen Mace
 Author URI: http://kellenmace.com/
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 /**
  * Insert Facebook Conversion Pixel
- * @since  1.0
+ * @since 1.0
  */
 if ( ! is_admin() ) {
 	function fb_pxl_head() {
@@ -37,13 +37,13 @@ if ( ! is_admin() ) {
 elseif ( is_admin() ) {
 	/**
 	 * Include plugin options page
-	 * @since  1.0
+	 * @since 1.0
 	 */
 	include_once( plugin_dir_path( __FILE__ ) . 'includes/admin.php' );
 
 	/**
 	 * Display meta box in admin
-	 * @since  1.1
+	 * @since 1.1
 	 */
 	function fb_pxl_meta( array $meta_boxes ) {
 		$prefix = 'fb_pxl_';
@@ -82,7 +82,7 @@ elseif ( is_admin() ) {
 
 	/**
 	 * Include Custom Metaboxes and Fields Library
-	 * @since  1.0
+	 * @since 1.0
 	 */
 	function fb_pxl_init_mtbxs() {
 		if ( ! class_exists( 'cmb_Meta_Box' ) )
@@ -92,7 +92,7 @@ elseif ( is_admin() ) {
 	
 	/**
 	 * Display settings link on WP plugin page
-	 * @since  1.0
+	 * @since 1.0
 	 */
 	function fb_pxl_plugin_action_links( $links, $file ) {
 		$plugin_file = 'facebook-conversion-pixel/facebook-conversion-pixel.php';
@@ -107,7 +107,7 @@ elseif ( is_admin() ) {
 
 /**
  * Set default options on activation
- * @since  1.1
+ * @since 1.1
  */
 function fb_pxl_activate() {
 	$options = array(
