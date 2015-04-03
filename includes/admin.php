@@ -22,19 +22,19 @@ class Fb_Pxl_Admin {
 	 * @since 1.0
 	 */
 	public function __construct() {
+		// Set our title
 		$this->title = __( 'Facebook Conversion Pixel', 'myprefix' );
 		$this->hooks();
  	}
  
 	/**
 	 * Initiate hooks
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_init', array( $this, 'update_options' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
-		add_action( 'admin_head', array( $this, 'custom_admin_styles' ) );
 	}
  
 	/**
@@ -50,37 +50,22 @@ class Fb_Pxl_Admin {
 	 * @since  1.0
 	 */
 	public function update_options() {
-		//wp_die( '<pre>' . print_r( array( get_option( 'fb_pxl_options' ) ), 1 ) . '</pre>' );
 		$options = get_option( 'fb_pxl_options' );
 		$post_types = get_post_types();
 
-		// Exclude navigation menu and revision post types
-		if ( in_array( 'nav_menu_item', $post_types ) ) {
-			unset( $post_types[ 'nav_menu_item' ] );
-		}
-		if ( in_array( 'revision', $post_types ) ) {
-			unset( $post_types[ 'revision' ] );
-		}
-		
+		// Remove any options that don't have a corresponding post type
 		if ( $options ) {
-			// Add any missing post types to the options array
-			foreach ( $post_types as $post_type ) {
-				if ( ! array_key_exists( $post_type, $options ) ) {
-						$options[ $post_type ] = '';
-				}
-			}
-
-			// Remove any options that don't have a corresponding post type
 			foreach ( $options as $option_key => $option_value ) {
 				if ( ! array_key_exists( $option_key, $post_types ) ) {
 					unset( $options[ $option_key ] );
 				}
 			}
 		}
-		else {
-			// Populate options array, if empty
-			foreach ( $post_types as $post_type ) {
-					$options[ $post_type ] = '';
+
+		// Add any post types missing from the options array
+		foreach ( $post_types as $post_type ) {
+			if ( ! array_key_exists( $post_type, $options ) ) {
+				$options[ $post_type ] = '';
 			}
 		}
 
@@ -151,20 +136,8 @@ class Fb_Pxl_Admin {
 	public function fb_pxl_display_on_output( $args ) {
 		$option_key = $args[ 0 ];
 		$option_value = $args[ 1 ];
-		$html = '<input type="checkbox" id="fb_pxl_enable_' . $option_key . '" name="fb_pxl_options[' . $option_key . ']" value="on"' . checked( $option_value, "on", false ) . '/>';
+		$html = '<input type="checkbox" id="fb_pxl_disable_' . $option_key . '" name="fb_pxl_options[' . $option_key . ']" value="on"' . checked( $option_value, "on", false ) . '/>';
 		echo $html;
-	}
-
-    /**
-	 * Apply custom admin styles
-	 * @since  0.1.1
-	 */
-	public function custom_admin_styles() {
-		echo '<style>
-			#fb_pxl_conversion_code {
-				width: 100%;
-			}
-		</style>';
 	}
 }
  

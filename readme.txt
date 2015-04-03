@@ -4,7 +4,7 @@ Donate link: n/a
 Tags: facebook, conversion, pixel, facebook pixel, facebook conversion, conversion pixel, code, add, insert
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,9 @@ To verify that the pixel is working correctly, test it by navigating to the web 
 
 = 1.2 =
 * Updated plugin to use new CMB2 version of Custom Metaboxes and Fields library
+
+= 1.3 =
+* Updated CMB2 to latest version, cleaned up code in main plugin file, avoiding a potential php warning
 
 == Screenshots ==
 1. Paste in your Facebook Conversion Pixel code and check the Insert Code checkbox to insert it.
